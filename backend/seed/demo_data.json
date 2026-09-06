@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "TRACE-X deterministic synthetic demo dataset — SIH26183",
+    "disclaimer": "All addresses, transactions, and identities are entirely synthetic. Any resemblance to real wallets or real transactions is coincidental."
+  },
+  "wallets": [
+    {
+      "address": "0xvictim1000000000000000000000000000000001",
+      "label": "Victim Wallet (Rajeev Kumar)",
+      "type": "victim",
+      "chain": "ethereum",
+      "balance_eth": 0.12,
+      "balance_usd": 380.0,
+      "transaction_count": 8,
+      "is_contract": false,
+      "first_seen": "2024-11-01T08:00:00Z",
+      "last_seen": "2024-11-15T14:30:00Z",
+      "tags": ["victim-reported", "sih26183-demo"]
+    },
+    {
+      "address": "0xsuspect000000000000000000000000000000001",
+      "label": "Suspect Wallet (Phishing Operator)",
+      "type": "suspect",
+      "chain": "ethereum",
+      "balance_eth": 0.05,
+      "balance_usd": 158.0,
+      "transaction_count": 143,
+      "is_contract": false,
+      "first_seen": "2024-09-15T03:00:00Z",
+      "last_seen": "2024-11-20T22:10:00Z",
+      "tags": ["high-velocity", "fan-out", "burner-pattern", "sih26183-demo"]
+    },
+    {
+      "address": "0xburner00000000000000000000000000000000001",
+      "label": "Burner Wallet #1",
+      "type": "intermediary",
+      "chain": "ethereum",
+      "balance_eth": 0.001,
+      "balance_usd": 3.2,
+      "transaction_count": 12,
+      "is_contract": false,
+      "first_seen": "2024-11-10T09:00:00Z",
+      "last_seen": "2024-11-10T23:59:00Z",
+      "tags": ["short-lived", "burner", "single-day-activity"]
+    },
+    {
+      "address": "0xintermed0000000000000000000000000000000001",
+      "label": "Intermediary A",
+      "type": "intermediary",
+      "chain": "ethereum",
+      "balance_eth": 0.0,
+      "balance_usd": 0.0,
+      "transaction_count": 67,
+      "is_contract": false,
+      "first_seen": "2024-10-01T00:00:00Z",
+      "last_seen": "2024-11-12T06:00:00Z",
+      "tags": ["layering", "pass-through"]
+    },
+    {
+      "address": "0xintermed0000000000000000000000000000000002",
+      "label": "Intermediary B",
+      "type": "intermediary",
+      "chain": "ethereum",
+      "balance_eth": 0.0,
+      "balance_usd": 0.0,
+      "transaction_count": 34,
+      "is_contract": false,
+      "first_seen": "2024-10-20T00:00:00Z",
+      "last_seen": "2024-11-13T05:00:00Z",
+      "tags": ["layering"]
+    },
+    {
+      "address": "0xintermed0000000000000000000000000000000003",
+      "label": "Intermediary C",
+      "type": "intermediary",
+      "chain": "ethereum",
+      "balance_eth": 0.0,
+      "balance_usd": 0.0,
+      "transaction_count": 22,
+      "is_contract": false,
+      "first_seen": "2024-11-05T00:00:00Z",
+      "last_seen": "2024-11-14T12:00:00Z",
+      "tags": ["layering"]
+    },
+    {
+      "address": "0xexchange0000000000000000000000000000000001",
+      "label": "CryptoExX Hot Wallet (Known VASP)",
+      "type": "exchange",
+      "chain": "ethereum",
+      "balance_eth": 24850.5,
+      "balance_usd": 78725000.0,
+      "transaction_count": 1450000,
+      "is_contract": false,
+      "first_seen": "2021-03-01T00:00:00Z",
+      "last_seen": "2024-11-20T23:59:00Z",
+      "tags": ["known-vasp", "high-volume", "exchange-cluster"]
+    }
+  ],
+  "transactions": [
+    {
+      "tx_hash": "0xTX001victim_to_suspect",
+      "from_address": "0xvictim1000000000000000000000000000000001",
+      "to_address": "0xsuspect000000000000000000000000000000001",
+      "amount_eth": 2.5,
+      "amount_usd": 7925.0,
+      "block_number": 21000001,
+      "timestamp": "2024-11-10T09:14:22Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 25.0,
+      "chain": "ethereum",
+      "hop_number": 0,
+      "risk_flags": ["victim-outbound", "phishing-suspected"]
+    },
+    {
+      "tx_hash": "0xTX002suspect_to_burner",
+      "from_address": "0xsuspect000000000000000000000000000000001",
+      "to_address": "0xburner00000000000000000000000000000000001",
+      "amount_eth": 2.45,
+      "amount_usd": 7767.5,
+      "block_number": 21000045,
+      "timestamp": "2024-11-10T09:22:11Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 25.0,
+      "chain": "ethereum",
+      "hop_number": 1,
+      "risk_flags": ["rapid-forward", "amount-concentration"]
+    },
+    {
+      "tx_hash": "0xTX003burner_to_intermA",
+      "from_address": "0xburner00000000000000000000000000000000001",
+      "to_address": "0xintermed0000000000000000000000000000000001",
+      "amount_eth": 1.2,
+      "amount_usd": 3804.0,
+      "block_number": 21000201,
+      "timestamp": "2024-11-10T11:05:33Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 22.0,
+      "chain": "ethereum",
+      "hop_number": 2,
+      "risk_flags": ["layering"]
+    },
+    {
+      "tx_hash": "0xTX004burner_to_intermB",
+      "from_address": "0xburner00000000000000000000000000000000001",
+      "to_address": "0xintermed0000000000000000000000000000000002",
+      "amount_eth": 1.2,
+      "amount_usd": 3804.0,
+      "block_number": 21000202,
+      "timestamp": "2024-11-10T11:05:45Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 22.0,
+      "chain": "ethereum",
+      "hop_number": 2,
+      "risk_flags": ["layering", "fan-out"]
+    },
+    {
+      "tx_hash": "0xTX005intermA_to_intermC",
+      "from_address": "0xintermed0000000000000000000000000000000001",
+      "to_address": "0xintermed0000000000000000000000000000000003",
+      "amount_eth": 1.18,
+      "amount_usd": 3740.6,
+      "block_number": 21002100,
+      "timestamp": "2024-11-12T03:44:55Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 18.0,
+      "chain": "ethereum",
+      "hop_number": 3,
+      "risk_flags": ["layering"]
+    },
+    {
+      "tx_hash": "0xTX006intermB_to_intermC",
+      "from_address": "0xintermed0000000000000000000000000000000002",
+      "to_address": "0xintermed0000000000000000000000000000000003",
+      "amount_eth": 1.18,
+      "amount_usd": 3740.6,
+      "block_number": 21002300,
+      "timestamp": "2024-11-13T05:11:00Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 18.0,
+      "chain": "ethereum",
+      "hop_number": 3,
+      "risk_flags": ["layering", "fan-in"]
+    },
+    {
+      "tx_hash": "0xTX007intermC_to_exchange",
+      "from_address": "0xintermed0000000000000000000000000000000003",
+      "to_address": "0xexchange0000000000000000000000000000000001",
+      "amount_eth": 2.35,
+      "amount_usd": 7449.25,
+      "block_number": 21003500,
+      "timestamp": "2024-11-14T12:33:00Z",
+      "gas_used": 21000,
+      "gas_price_gwei": 20.0,
+      "chain": "ethereum",
+      "hop_number": 4,
+      "risk_flags": ["exchange-deposit", "known-vasp"]
+    }
+  ],
+  "vasp_labels": [
+    {
+      "address": "0xexchange0000000000000000000000000000000001",
+      "entity": "CryptoExX",
+      "category": "centralized_exchange",
+      "confidence": 0.91,
+      "jurisdiction": "Seychelles",
+      "kyc_level": "basic",
+      "risk_rating": "medium",
+      "cluster_id": "VASP-CEX-001",
+      "sources": ["chainalysis-synthetic", "etherscan-synthetic"],
+      "last_verified": "2024-10-01T00:00:00Z"
+    }
+  ],
+  "risk_labels": [
+    {"address": "0xsuspect000000000000000000000000000000001", "label": "phishing-operator", "confidence": 0.85},
+    {"address": "0xburner00000000000000000000000000000000001", "label": "burner-wallet", "confidence": 0.92},
+    {"address": "0xintermed0000000000000000000000000000000001", "label": "money-mule", "confidence": 0.78},
+    {"address": "0xintermed0000000000000000000000000000000002", "label": "money-mule", "confidence": 0.76},
+    {"address": "0xintermed0000000000000000000000000000000003", "label": "aggregator", "confidence": 0.82}
+  ]
+}
